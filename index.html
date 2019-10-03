@@ -8,8 +8,32 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="assets/style.css"
 </head>
 <body>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyD2vtnzHZOsQgLL2achpNB8XN4kyZcmWew",
+    authDomain: "train-scheduler-cdafc.firebaseapp.com",
+    databaseURL: "https://train-scheduler-cdafc.firebaseio.com",
+    projectId: "train-scheduler-cdafc",
+    storageBucket: "",
+    messagingSenderId: "237590012483",
+    appId: "1:237590012483:web:d0c5a52521a18647f5eaf6",
+    measurementId: "G-HL7EZHYXPQ"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
         <div class="jumbotron jumbotron-fluid">
                 <div class="container">
                   <h1 class="display-4">Anytime is Train Time</h1>
