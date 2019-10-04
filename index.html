@@ -1,105 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="assets/style.css"
-</head>
-<body>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
   <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-database.js"></script>
+  <!-- https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script> 
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-analytics.js"></script>
+<body>
 
-<script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyD2vtnzHZOsQgLL2achpNB8XN4kyZcmWew",
-    authDomain: "train-scheduler-cdafc.firebaseapp.com",
-    databaseURL: "https://train-scheduler-cdafc.firebaseio.com",
-    projectId: "train-scheduler-cdafc",
-    storageBucket: "",
-    messagingSenderId: "237590012483",
-    appId: "1:237590012483:web:d0c5a52521a18647f5eaf6",
-    measurementId: "G-HL7EZHYXPQ"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-</script>
-        <div class="jumbotron jumbotron-fluid">
-                <div class="container">
-                  <h1 class="display-4">Anytime is Train Time</h1>
-                  <p class="lead">Choo Choo.  Chee Chee.</p>
-                </div>
-        <div class="container">
-        <table class="table">
-                <thead class="thead-dark">
-                          <tr>
-                            <th scope="col">Train Name</th>
-                            <th scope="col">Destination</th>
-                            <th scope="col">Frequency (min)</th>
-                            <th scope="col">Next Arrival</th>
-                            <th scope="col">Minutes Away</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">Trenton Express</th>
-                            <td>Trenton</td>
-                            <td>25</td>
-                            <td>05:35 PM</td>
-                            <td>10</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">Oregon Trail</th>
-                            <td>Salem, Oregon</td>
-                            <td>3600</td>
-                            <td>01:39 PM</td>
-                            <td>1154</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">Midnight Carriage</th>
-                            <td>Philadelphia</td>
-                            <td>15</td>
-                            <td>05:35 PM</td>
-                            <td>10</td>
-                          </tr>
-                        </tbody>
-                      </table>
-              </div>
-            </div>
-            <div class="container">
-                    <span class="border border-primary">
-            <form>
-                    <div class="form-group">
-                      <label for="">Train Name</label>
-                      <input type="" class="form-control" id="trainsName" aria-describedby="" placeholder="">
-                    </div>
-                    <div class="form-group">
-                      <label for="">Destination</label>
-                      <input type="" class="form-control" id="trainsDestination" placeholder="">
-                    </div>
-                    <div class="form-group">
-                     <label for="">First Train Time (HH:mm - military time)</label>
-                     <input type="" class="form-control" id="firstTrainTime" placeholder="">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Frequency (min)</label>
-                        <input type="" class="form-control" id="trainFrequency" placeholder="">
-                     </div>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                  </form>
-                </div>
-            </span>
-    
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Anytime is Train Time</h1>
+      <p class="lead">Choo Choo. Chee Chee.</p>
+    </div>
+    <div class="container">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Train Name</th>
+            <th scope="col">Destination</th>
+            <th scope="col">Frequency (min)</th>
+            <th scope="col">Next Arrival</th>
+            <th scope="col">Minutes Away</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Trenton Express</th>
+            <td>Trenton</td>
+            <td>25</td>
+            <td>05:35 PM</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <th scope="row">Oregon Trail</th>
+            <td>Salem, Oregon</td>
+            <td>3600</td>
+            <td>01:39 PM</td>
+            <td>1154</td>
+          </tr>
+          <tr>
+            <th scope="row">Midnight Carriage</th>
+            <td>Philadelphia</td>
+            <td>15</td>
+            <td>05:35 PM</td>
+            <td>10</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="container">
+    <div class="border border-primary">
+      <form>
+        <div class="form-group">
+          <label for="trainsName">Train Name</label>
+          <input type="text" class="form-control" id="trainsName"  placeholder="Kim's Express">
+        </div>
+        <div class="form-group">
+          <label for="trainsDestination">Destination</label>
+          <input type="text" class="form-control" id="trainsDestination" placeholder="Hometown USA">
+        </div>
+        <div class="form-group">
+          <label for="firstTrainTime">First Train Time (HH:mm - military time)</label>
+          <input type="text" class="form-control" id="firstTrainTime" placeholder="4:00">
+        </div>
+        <div class="form-group">
+          <label for="trainFrequency">Frequency (min)</label>
+          <input type="text" class="form-control" id="trainFrequency" placeholder="5">
+        </div>
+
+        <button type="submit" id="submitbutton" class="btn btn-primary">Submit</button>
+      </form>
+  </div>
+</div>
+  <script src="assets/app.js"></script>
 </body>
+
 </html>
+<!-- Add moment.js -->
