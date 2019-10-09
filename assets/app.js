@@ -10,6 +10,8 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 var trainData = firebase.database()
 // var connectionsRef = trainData.ref("/connections");
+// trainData.ref().push(trainData);
+
 trainData.ref().on("child_added", function(childSnapshot, prevChildKey) {
     console.log(childSnapshot.val());
     var trainsName = childSnapshot.val().name;
@@ -23,6 +25,12 @@ trainData.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
     var firstTrainTimePretty = moment.unix(firstTrainTime).format("HH.mm")
     var trainFrequency = moment.unix(trainFrequency).format("mm")
+    var nextArrival = moment(firstTrainTime, "HH:mm").add( "mm");
+    var minutesAway = moment().diff(moment(nextArrival, "X"), "minutes");
+    console.log(minutesAway);
+
+   
+    
 
 
     // Loop through the for loop 
